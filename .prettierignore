@@ -1,0 +1,8 @@
+.cache
+public
+node_modules
+static
+dist
+
+# Don't format Markdown!
+*.mdx
