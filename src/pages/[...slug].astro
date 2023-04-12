@@ -1,0 +1,52 @@
+---
+import { getCollection } from "astro:content"
+import dayjs from "dayjs"
+
+import Layout from "../layouts/Layout.astro"
+import Header from "../components/Header.astro"
+
+export async function getStaticPaths() {
+  const posts = await getCollection("post")
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }))
+}
+
+const { post } = Astro.props
+const { Content } = await post.render()
+---
+
+<Layout title={`${post.data.title} - Lon Sagisawa`}>
+  <Header />
+  <article class="article">
+    <h1>{post.data.title}</h1>
+    <p class="date">{dayjs(post.data.date).format("MMM, D YYYY")}</p>
+    <Content />
+  </article>
+  <a href="/" class="back_to_top">← Back to top</a>
+</Layout>
+
+<style>
+  .article {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: solid #292d37 1px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .article {
+      border-bottom: solid #f3f4f6 1px;
+    }
+  }
+
+  .date {
+    font-size: 0.9rem;
+  }
+</style>
+
+<style is:global>
+  .article > p {
+    margin-bottom: 1rem;
+  }
+</style>
