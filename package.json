@@ -13,8 +13,8 @@
     "astro": "^2.1.9"
   },
   "devDependencies": {
-    "@fontsource/iosevka": "^4.5.4",
-    "@fontsource/inter": "^4.5.15",
+    "@fontsource/iosevka": "^5.0.0",
+    "@fontsource/inter": "^5.0.0",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "dayjs": "^1.11.7",
